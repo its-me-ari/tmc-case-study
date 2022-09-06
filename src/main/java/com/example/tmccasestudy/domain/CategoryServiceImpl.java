@@ -17,9 +17,10 @@ public class CategoryServiceImpl implements CreateCategoryService {
     }
 
     @Override
-    public void save(Category category) {
+    public Category save(Category category) {
         category.setUuid(UUID.randomUUID().toString());
         category.setCreatedAt(new Date());
         saveCategoryPort.save(category);
+        return category;
     }
 }
