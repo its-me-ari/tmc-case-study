@@ -4,7 +4,6 @@ import com.example.tmccasestudy.ports.input.CreateCategoryService;
 import com.example.tmccasestudy.ports.output.SaveCategoryPort;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -19,7 +18,7 @@ public class CategoryServiceImpl implements CreateCategoryService {
     @Override
     public Category save(Category category) {
         category.setId(UUID.randomUUID().toString());
-        category.setCreatedAt(new Date());
+        category.setCreatedAt(System.currentTimeMillis());
         saveCategoryPort.save(category);
         return category;
     }

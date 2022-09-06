@@ -2,7 +2,6 @@ package com.example.tmccasestudy.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class Category {
@@ -10,7 +9,7 @@ public class Category {
     @Id
     private String id;
     private String name;
-    private Date createdAt;
+    private long createdAt;
 
     public String getId() {
         return id;
@@ -28,11 +27,11 @@ public class Category {
         this.name = name;
     }
 
-    public Date getCreatedAt() {
+    public long getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(long createdAt) {
         this.createdAt = createdAt;
     }
 }
