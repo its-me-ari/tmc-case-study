@@ -1,5 +1,6 @@
 package com.example.tmccasestudy.adapters.input.rest;
 
+import com.example.tmccasestudy.adapters.input.rest.data.ApiResponse;
 import com.example.tmccasestudy.adapters.input.rest.data.ProductRequest;
 import com.example.tmccasestudy.domain.Product;
 import com.example.tmccasestudy.ports.input.CreateProductService;
@@ -21,7 +22,9 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<?> submitProduct(@RequestBody @Valid ProductRequest product) {
         Product newProduct = service.save(product);
-        return ResponseEntity.ok(newProduct);
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setData(newProduct);
+        return ResponseEntity.ok(apiResponse);
     }
 
 }

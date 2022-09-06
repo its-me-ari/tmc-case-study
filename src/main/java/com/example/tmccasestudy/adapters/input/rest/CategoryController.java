@@ -1,6 +1,6 @@
 package com.example.tmccasestudy.adapters.input.rest;
 
-import com.example.tmccasestudy.adapters.input.rest.data.CategoryResponse;
+import com.example.tmccasestudy.adapters.input.rest.data.ApiResponse;
 import com.example.tmccasestudy.ports.input.CreateCategoryService;
 import com.example.tmccasestudy.domain.Category;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<?> submitCategory(@RequestBody @Valid Category category) {
         Category newCategory = service.save(category);
-        CategoryResponse categoryResponse = new CategoryResponse();
+        ApiResponse categoryResponse = new ApiResponse();
         categoryResponse.setData(newCategory);
         return ResponseEntity.ok(categoryResponse);
     }
