@@ -8,16 +8,16 @@ import java.util.Date;
 public class Category {
 
     @Id
-    private String uuid;
+    private String id;
     private String name;
     private Date createdAt;
 
-    public String getUuid() {
-        return uuid;
+    public String getId() {
+        return id;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
