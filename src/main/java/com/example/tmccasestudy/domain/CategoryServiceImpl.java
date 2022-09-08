@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CreateCategoryService {
         newCategory.setName(category.getName());
         newCategory.setCreatedAt(System.currentTimeMillis());
         saveCategoryPort.save(newCategory);
-        categoryEventProducer.send(newCategory.getName());
+        categoryEventProducer.send(newCategory);
         return newCategory;
     }
 }
