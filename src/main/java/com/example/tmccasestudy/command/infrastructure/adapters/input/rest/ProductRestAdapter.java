@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/products")
 @RequiredArgsConstructor
@@ -22,13 +25,16 @@ public class ProductRestAdapter {
     private final ProductRestMapper productRestMapper;
 
     @PostMapping
-    public ResponseEntity<ProductCreateResponse> createCategory(@RequestBody ProductCreatedRequest productCreatedRequest) {
+    public ResponseEntity<Map<String, ProductCreateResponse>> createCategory(@RequestBody ProductCreatedRequest productCreatedRequest) {
 
         Product product = productRestMapper.toProduct(productCreatedRequest);
 
         product = createProductUseCase.createProduct(product);
 
-        return new ResponseEntity<>(productRestMapper.toProductCreateResponse(product), HttpStatus.CREATED);
+        Map<String, ProductCreateResponse> payload = new HashMap<>();
+        payload.put("data", productRestMapper.toProductCreateResponse(product));
+
+        return new ResponseEntity<>(payload, HttpStatus.CREATED);
 
     }
 

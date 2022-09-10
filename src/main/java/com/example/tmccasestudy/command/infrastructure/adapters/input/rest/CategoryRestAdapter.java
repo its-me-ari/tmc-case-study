@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("api/categories/v2")
 @RequiredArgsConstructor
@@ -23,13 +26,16 @@ public class CategoryRestAdapter {
     private final CategoryRestMapper categoryRestMapper;
 
     @PostMapping
-    public ResponseEntity<CategoryCreateResponse> createCategory(@RequestBody CategoryCreateRequest categoryCreateRequest) {
+    public ResponseEntity<Map<String, CategoryCreateResponse>> createCategory(@RequestBody CategoryCreateRequest categoryCreateRequest) {
 
         Category category = categoryRestMapper.toCategory(categoryCreateRequest);
 
         category = createCategoryUseCase.createCategory(category);
 
-        return new ResponseEntity<>(categoryRestMapper.toCategoryCreateResponse(category), HttpStatus.CREATED);
+        Map<String, CategoryCreateResponse> payload = new HashMap<>();
+        payload.put("data", categoryRestMapper.toCategoryCreateResponse(category));
+
+        return new ResponseEntity<>(payload, HttpStatus.CREATED);
 
     }
 
