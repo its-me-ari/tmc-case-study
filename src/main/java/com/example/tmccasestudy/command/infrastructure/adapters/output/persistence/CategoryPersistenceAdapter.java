@@ -18,7 +18,6 @@ public class CategoryPersistenceAdapter implements CategoryOutputPort {
 
     private final CategoryRepository categoryRepository;
 
-    private final CategoryNoSqlRepository categoryNoSqlRepository;
 
     private final CategoryPersistenceMapper categoryPersistenceMapper;
 
@@ -27,13 +26,6 @@ public class CategoryPersistenceAdapter implements CategoryOutputPort {
         CategoryEntity categoryEntity = categoryPersistenceMapper.toCategoryEntity(category);
         categoryEntity = categoryRepository.save(categoryEntity);
         return categoryPersistenceMapper.toCategory(categoryEntity);
-    }
-
-    @Override
-    public void saveAsDocument(Category category) {
-        CategoryDocument categoryDocument = categoryPersistenceMapper.toCategoryDocument(category);
-        categoryDocument = categoryNoSqlRepository.save(categoryDocument);
-        log.info("Category Saved {}", categoryDocument);
     }
 
 }
