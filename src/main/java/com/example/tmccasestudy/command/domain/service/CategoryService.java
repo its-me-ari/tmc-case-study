@@ -7,6 +7,7 @@ import com.example.tmccasestudy.command.domain.model.Category;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Service
@@ -18,7 +19,7 @@ public class CategoryService implements CreateCategoryUseCase {
     private final CategoryEventPublisher categoryEventPublisher;
 
     @Override
-    public Category createCategory(Category category) {
+    public Category createCategory(@Valid Category category) {
         category.setId(UUID.randomUUID().toString());
         category.setCreatedAt(System.currentTimeMillis());
         category = categoryOutputPort.saveCategory(category);
