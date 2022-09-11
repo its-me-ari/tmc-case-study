@@ -1,9 +1,7 @@
 package com.example.tmccasestudy.command.infrastructure.adapters.input.rest;
 
-import com.example.tmccasestudy.command.domain.model.Product;
 import com.example.tmccasestudy.command.infrastructure.adapters.output.persistence.entity.ProductDocument;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHitSupport;
 import org.springframework.data.elasticsearch.core.SearchHits;
@@ -29,13 +27,11 @@ import java.util.stream.Collectors;
 public class SearchRestAdapter {
 
     private final ElasticsearchOperations elasticsearchOperations;
+
     @GetMapping
     public ResponseEntity<Map<String, Object>> searchProduct(
             @RequestParam(required = false) List<String> sku,
-            @RequestParam(required = false) List<String> name,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "100") int total,
-            @RequestParam(defaultValue = "1") int current) {
+            @RequestParam(required = false) List<String> name) {
 
         Criteria criteria = new Criteria();
 
