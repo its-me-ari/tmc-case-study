@@ -1,4 +1,4 @@
-package com.example.tmc.infrastructure.adapters.config;
+package com.example.tmc.infrastructure.adapters.config.kafka;
 
 public class KafkaGroups {
 

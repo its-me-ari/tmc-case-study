@@ -2,8 +2,8 @@ package com.example.tmc.infrastructure.adapters.input.eventlistener;
 
 import com.example.tmc.application.ports.output.CategoryOutputNoSqlPort;
 import com.example.tmc.domain.model.Category;
-import com.example.tmc.infrastructure.adapters.config.KafkaGroups;
-import com.example.tmc.infrastructure.adapters.config.KafkaTopics;
+import com.example.tmc.infrastructure.adapters.config.kafka.KafkaGroups;
+import com.example.tmc.infrastructure.adapters.config.kafka.KafkaTopics;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
