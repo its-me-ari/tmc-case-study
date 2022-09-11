@@ -1,5 +1,6 @@
 package com.example.tmccasestudy.command.infrastructure.adapters.input.rest.data.response;
 
+import com.example.tmccasestudy.command.domain.model.Category;
 import lombok.*;
 
 @Builder
@@ -17,7 +18,7 @@ public class ProductCreateResponse {
 
     private Integer stock;
 
-    private String categoryId;
+    private Category category;
     private Long createdAt;
 
 }

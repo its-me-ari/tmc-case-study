@@ -1,5 +1,6 @@
 package com.example.tmccasestudy.command.infrastructure.adapters.output.persistence.entity;
 
+import com.example.tmccasestudy.command.domain.model.Category;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -18,7 +19,7 @@ public class ProductDocument {
     private String name;
     private Integer price;
     private Integer stock;
-    private String categoryId;
+    private Category category;
     private Long createdAt;
 
 }

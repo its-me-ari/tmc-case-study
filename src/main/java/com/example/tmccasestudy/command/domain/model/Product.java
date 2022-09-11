@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Builder
 @Getter
@@ -19,7 +20,9 @@ public class Product {
     private String name;
     private Integer price;
     private Integer stock;
-    private String categoryId;
+
+    @OneToOne
+    private Category category;
     private Long createdAt;
 
 }
