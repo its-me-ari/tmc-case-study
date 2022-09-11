@@ -25,7 +25,7 @@ public class ProductRestAdapter {
     private final ProductRestMapper productRestMapper;
 
     @PostMapping
-    public ResponseEntity<Map<String, ProductCreateResponse>> createCategory(@RequestBody ProductCreatedRequest productCreatedRequest) {
+    public ResponseEntity<Map<String, ProductCreateResponse>> createProduct(@RequestBody ProductCreatedRequest productCreatedRequest) {
 
         Product product = productRestMapper.toProduct(productCreatedRequest);
 
