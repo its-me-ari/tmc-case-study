@@ -7,6 +7,7 @@ import com.example.tmccasestudy.command.domain.model.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Service
@@ -18,7 +19,7 @@ public class ProductService implements CreateProductUseCase {
     private final ProductEventPublisher productEventPublisher;
 
     @Override
-    public Product createProduct(Product product) {
+    public Product createProduct(@Valid Product product) {
         product.setId(UUID.randomUUID().toString());
         product.setCreatedAt(System.currentTimeMillis());
         product = productOutputPort.saveProduct(product);
