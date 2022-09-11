@@ -55,7 +55,7 @@ public class SearchRestAdapter {
         paging.put("current", page.getNumber());
 
         Map<String, Object> response = new HashMap<>();
-        response.put("data", page.getContent());
+        response.put("data", products.stream().map(product -> product.getContent()).collect(Collectors.toList()));
         response.put("paging", paging);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
