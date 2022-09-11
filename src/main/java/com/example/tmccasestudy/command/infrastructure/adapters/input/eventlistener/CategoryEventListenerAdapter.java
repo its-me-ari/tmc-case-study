@@ -1,6 +1,7 @@
 package com.example.tmccasestudy.command.infrastructure.adapters.input.eventlistener;
 
 import com.example.tmccasestudy.command.application.ports.input.CategoryEventSubscriber;
+import com.example.tmccasestudy.command.application.ports.output.CategoryOutputPort;
 import com.example.tmccasestudy.command.domain.model.Category;
 import com.example.tmccasestudy.command.infrastructure.adapters.config.KafkaGroups;
 import com.example.tmccasestudy.command.infrastructure.adapters.config.KafkaTopics;
@@ -15,12 +16,14 @@ public class CategoryEventListenerAdapter implements CategoryEventSubscriber {
 
     private final KafkaTemplate<String, Category> kafkaTemplate;
 
+    private final CategoryOutputPort categoryOutputPort;
+
     @Override
     @KafkaListener(
             topics = KafkaTopics.CATEGORY,
             groupId = KafkaGroups.TIRTA_MEDICAL_CENTRE
     )
     public void consume(Category category) {
-        System.out.println("Message received = " + category.toString());
+        categoryOutputPort.saveAsDocument(category);
     }
 }
