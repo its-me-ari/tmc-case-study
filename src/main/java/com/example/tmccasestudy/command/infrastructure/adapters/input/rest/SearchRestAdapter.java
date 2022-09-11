@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 public class SearchRestAdapter {
 
     private final ElasticsearchOperations elasticsearchOperations;
-
     @GetMapping
     public ResponseEntity<Map<String, Object>> searchProduct(
             @RequestParam(required = false) List<String> sku,
@@ -38,6 +37,10 @@ public class SearchRestAdapter {
         if (sku != null) {
             Criteria skuCriteria = new Criteria("sku").in(sku);
             criteria.and(skuCriteria);
+        }
+        if (name != null) {
+            Criteria nameCriteria = new Criteria("name").in(name);
+            criteria.and(nameCriteria);
         }
 
         Query searchQuery = new CriteriaQuery(criteria);
