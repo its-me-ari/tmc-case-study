@@ -1,9 +1,8 @@
 package com.example.tmccasestudy.command.domain.exceptions;
 
 import lombok.*;
-import org.springframework.http.HttpStatus;
 
-import java.util.List;
+import java.util.Map;
 
 @Builder
 @Getter
@@ -12,7 +11,5 @@ import java.util.List;
 @NoArgsConstructor
 public class ApiError {
 
-    private HttpStatus status;
-    private String message;
-    private List<String> errors;
+    private Map<String, String> errors;
 }
