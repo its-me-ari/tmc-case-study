@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/categories/v2")
+@RequestMapping("api/categories")
 @RequiredArgsConstructor
 public class CategoryRestAdapter {
 
