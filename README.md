@@ -51,6 +51,54 @@ project:
 ### Create Product API :
 
 - Endpoint : /api/products
+- Request Body :
+```
+{
+    "sku" : "SKU"
+    "name" : "Product Name",
+    "price" : 1000000,
+    "stock" : 100,
+    "categoryId" : "categoryId"
+}
+```
+
+- Success Response :
+```
+{
+    "data" : {
+        "id" : "uuid",
+        "sku" : "sku"
+        "name" : "Product Name",
+        "price" : 1000000,
+        "stock" : 100,
+        "category" : {
+            "id" : "uuid",
+            "name" : "Category Name"
+        },
+        "createdAt" : 1234556 // epoch time milis
+    }
+}
+```
+
+- Error Response :
+```
+{
+    "errors" : {
+        "sku" : [
+            "sku is empty",
+            "sku is unique"
+        ],
+        "name" : [
+            "name is empty",
+            "name length must not more than 255
+            characters”
+        ],
+        "price" : [
+            "price must not negative"
+        ],
+    }
+}
+```
 
 ## Backend Query API
 
