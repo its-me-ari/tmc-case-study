@@ -1,5 +1,6 @@
 package com.example.tmc.infrastructure.adapters.config.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
@@ -11,6 +12,8 @@ import org.springframework.util.ObjectUtils;
 @Component
 public class ApiKeyAuthenticationProvider implements AuthenticationProvider {
 
+    @Value("${project.api.key}")
+    private String apiKey;
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String apiKey = (String) authentication.getPrincipal();
@@ -18,7 +21,7 @@ public class ApiKeyAuthenticationProvider implements AuthenticationProvider {
         if (ObjectUtils.isEmpty(apiKey)) {
             throw new InsufficientAuthenticationException("No API key in request");
         } else {
-            if ("26d3058b-8745-45be-9a90-74b94cdbbd42".equals(apiKey)) {
+            if (this.apiKey.equals(apiKey)) {
                 return new ApiKeyAuthenticationToken(apiKey, true);
             }
             throw new BadCredentialsException("API Key is invalid");

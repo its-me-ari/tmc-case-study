@@ -1,3 +1,6 @@
+project:
+  api:
+    key: 26d3058b-8745-45be-9a90-74b94cdbbd42
 spring:
   kafka:
     consumer:
