@@ -8,6 +8,22 @@ with
 - Hexagonal Architecture
   https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749
 
+## Kafka and Elastic Database
+
+### Using Docker to simplify development (optional)
+
+To start a kafka and elastic database in a docker container, run:
+
+```
+docker-compose -f src/main/docker/<file-name>.yml up -d
+```
+
+To stop it and remove the container, run:
+
+```
+docker-compose -f src/main/docker/<file-name>.yml down
+```
+
 ## API Spec
 
 ### Authentication :
