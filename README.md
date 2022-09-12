@@ -8,6 +8,14 @@ with
 - Hexagonal Architecture
   https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749
 
+## Tech
+
+This application uses a number of open source projects to work properly:
+- Java Spring Boot
+- H2 Database (RDBMS System)
+- Apache Kafka
+- Elastic Database (NoSQL)
+
 ## Kafka and Elastic Database
 
 ### Using Docker to simplify development (optional)
