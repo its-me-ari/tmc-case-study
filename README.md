@@ -31,6 +31,17 @@ docker-compose -f src/main/docker/<file-name>.yml down
 For Backend Command API and Backend Query API, use simple
 API-KEY Authentication :
 
+Headers :
+- Authorization : API-KEY
+
+You can find the api key in `src/main/resources/application.yml` file :
+
+```
+project:
+  api:
+    key: <api-key-value>
+```
+
 ## Backend Command API
 
 ### Create Category API :
