@@ -114,6 +114,8 @@ project:
   and Query API
 
 ## Work in progress
+- Backend Query API, there are some issue on `@RequestParam`, so currently this feature only support two parameter: `sku, name`
 
+## What's next
 - Unit Test
 - Database Migration (Create Table, Index, etc)
