@@ -4,6 +4,8 @@ import com.example.tmc.cqrs.dto.query.QueryParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.service.SearchQueryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +24,11 @@ public class SearchQueryController {
     private final SearchQueryService searchQueryService;
 
     @GetMapping
-    public ResponseEntity<Map<String, ?>> search(QueryParameter queryParameter) {
+    public ResponseEntity<Map<String, ?>> search(
+            QueryParameter queryParameter,
+            Pageable pageable) {
 
-        final List<ProductDocument> products = searchQueryService.search(queryParameter);
+        final Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("data", products);

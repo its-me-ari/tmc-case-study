@@ -1,6 +1,8 @@
 package com.example.tmc.cqrs.repository;
 
 import com.example.tmc.cqrs.entity.ProductDocument;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,11 +11,11 @@ import java.util.List;
 @Repository
 public interface ProductElasticRepository extends ElasticsearchRepository<ProductDocument, String> {
 
-    List<ProductDocument> findBySkuIn(List<String> sku);
+    Page<ProductDocument> findBySkuIn(List<String> sku, Pageable pageable);
 
-    List<ProductDocument> findByNameIn(List<String> name);
+    Page<ProductDocument> findByNameIn(List<String> name, Pageable pageable);
 
-    List<ProductDocument> findByPriceBetween(Integer startPrice, Integer endPrice);
+    Page<ProductDocument> findByPriceBetween(Integer startPrice, Integer endPrice, Pageable pageable);
 
-    List<ProductDocument> findByStockBetween(Integer startPrice, Integer endPrice);
+    Page<ProductDocument> findByStockBetween(Integer startPrice, Integer endPrice, Pageable pageable);
 }
