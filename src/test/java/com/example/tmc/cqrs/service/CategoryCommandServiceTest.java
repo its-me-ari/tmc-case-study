@@ -40,11 +40,12 @@ class CategoryCommandServiceTest {
         given(categoryRepository.save(category)).willReturn(category);
 
         // when
-        categoryCommandService.createCategory(category);
+        Category newCategory = categoryCommandService.createCategory(category);
 
         // then
-        assertThat(category.getId()).isNotBlank();
-        assertThat(category.getName()).isNotBlank().isEqualTo(CATEGORY_NAME);
-        assertThat(category.getCreatedAt()).isGreaterThan(0);
+        assertThat(newCategory).isNotNull();
+        assertThat(newCategory.getId()).isNotBlank();
+        assertThat(newCategory.getName()).isEqualTo(CATEGORY_NAME);
+        assertThat(newCategory.getCreatedAt()).isGreaterThan(0);
     }
 }

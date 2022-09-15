@@ -4,5 +4,5 @@ import com.example.tmc.cqrs.entity.Category;
 
 public interface CategoryCommandService {
 
-    void createCategory(Category category);
+    Category createCategory(Category category);
 }

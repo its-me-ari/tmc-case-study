@@ -15,9 +15,9 @@ public class CategoryCommandServiceImpl implements CategoryCommandService {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public void createCategory(Category category) {
+    public Category createCategory(Category category) {
         category.setId(UUID.randomUUID().toString());
         category.setCreatedAt(System.currentTimeMillis());
-        categoryRepository.save(category);
+        return categoryRepository.save(category);
     }
 }
