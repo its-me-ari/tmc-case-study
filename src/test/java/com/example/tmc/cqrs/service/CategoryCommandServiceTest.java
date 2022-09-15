@@ -1,6 +1,7 @@
 package com.example.tmc.cqrs.service;
 
 import com.example.tmc.cqrs.entity.Category;
+import com.example.tmc.cqrs.event.producer.CategoryEventProducer;
 import com.example.tmc.cqrs.repository.CategoryRepository;
 import com.example.tmc.cqrs.service.impl.CategoryCommandServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +24,9 @@ class CategoryCommandServiceTest {
 
     @InjectMocks
     private CategoryCommandServiceImpl categoryCommandService;
+
+    @Mock
+    private CategoryEventProducer categoryEventProducer;
 
     private Category category;
 
