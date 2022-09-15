@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,8 +29,14 @@ public class SearchQueryController {
 
         final Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);
 
+        Map<String, Integer> paging = new HashMap<>();
+        paging.put("size", products.getSize());
+        paging.put("total", products.getTotalPages());
+        paging.put("current", products.getNumber() + 1);
+
         Map<String, Object> payload = new HashMap<>();
-        payload.put("data", products);
+        payload.put("data", products.getContent());
+        payload.put("paging", paging);
 
         return new ResponseEntity<>(payload, HttpStatus.OK);
     }
