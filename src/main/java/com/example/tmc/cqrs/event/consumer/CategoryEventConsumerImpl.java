@@ -1,27 +1,30 @@
-package com.example.tmc.infrastructure.adapters.input.eventlistener;
+package com.example.tmc.cqrs.event.consumer;
 
-import com.example.tmc.application.ports.output.CategoryOutputNoSqlPort;
-import com.example.tmc.domain.model.Category;
+import com.example.tmc.cqrs.entity.Category;
+import com.example.tmc.cqrs.service.CategoryCommandService;
 import com.example.tmc.infrastructure.adapters.config.kafka.KafkaGroups;
 import com.example.tmc.infrastructure.adapters.config.kafka.KafkaTopics;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CategoryEventListenerAdapter {
+@Slf4j
+public class CategoryEventConsumerImpl {
 
     private final KafkaTemplate<String, Category> kafkaTemplate;
 
-    private final CategoryOutputNoSqlPort categoryOutputNoSqlPort;
+    private final CategoryCommandService categoryCommandService;
 
     @KafkaListener(
             topics = KafkaTopics.CATEGORY,
             groupId = KafkaGroups.TIRTA_MEDICAL_CENTRE
     )
-    public void consume(Category category) {
-        categoryOutputNoSqlPort.saveCategory(category);
+    public void pull(Category category) {
+        log.info("Pull {}", category);
+        categoryCommandService.createDocument(category);
     }
 }

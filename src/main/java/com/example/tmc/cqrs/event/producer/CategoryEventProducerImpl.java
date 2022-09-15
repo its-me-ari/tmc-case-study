@@ -1,20 +1,22 @@
-package com.example.tmc.infrastructure.adapters.output.eventpublisher;
+package com.example.tmc.cqrs.event.producer;
 
-import com.example.tmc.application.ports.output.CategoryEventPublisher;
-import com.example.tmc.domain.model.Category;
+import com.example.tmc.cqrs.entity.Category;
 import com.example.tmc.infrastructure.adapters.config.kafka.KafkaTopics;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CategoryEventPublisherAdapter implements CategoryEventPublisher {
+@Slf4j
+public class CategoryEventProducerImpl implements CategoryEventProducer {
 
     private final KafkaTemplate<String, Category> kafkaTemplate;
 
     @Override
-    public void publishCategoryCreateEvent(Category category) {
+    public void pushCategoryCreateEvent(Category category) {
+        log.info("Push category create event {}", category);
         kafkaTemplate.send(KafkaTopics.CATEGORY, category);
     }
 }
