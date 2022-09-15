@@ -14,4 +14,6 @@ public interface ProductElasticRepository extends ElasticsearchRepository<Produc
     List<ProductDocument> findByNameIn(List<String> name);
 
     List<ProductDocument> findByPriceBetween(Integer startPrice, Integer endPrice);
+
+    List<ProductDocument> findByStockBetween(Integer startPrice, Integer endPrice);
 }

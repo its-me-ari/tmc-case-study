@@ -7,7 +7,6 @@ import com.example.tmc.cqrs.service.SearchQueryService;
 import com.example.tmc.cqrs.util.ObjectUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -33,6 +32,13 @@ public class SearchQueryServiceImpl implements SearchQueryService {
             int startPrice = queryParameter.getPrice().getStart();
             int endPrice = queryParameter.getPrice().getEnd();
             return productElasticRepository.findByPriceBetween(startPrice, endPrice);
+        }
+
+        final boolean hasStock = ObjectUtils.isNotNull(queryParameter.getStock());
+        if (hasStock) {
+            int startStock = queryParameter.getStock().getStart();
+            int endStock = queryParameter.getStock().getEnd();
+            return productElasticRepository.findByStockBetween(startStock, endStock);
         }
 
         return null;
