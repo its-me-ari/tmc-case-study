@@ -5,4 +5,6 @@ import com.example.tmc.cqrs.entity.Product;
 public interface ProductCommandService {
 
     Product createProduct(Product product);
+
+    Product createDocument(Product product);
 }

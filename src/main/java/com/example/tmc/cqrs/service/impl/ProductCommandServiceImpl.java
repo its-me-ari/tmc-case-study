@@ -2,6 +2,7 @@ package com.example.tmc.cqrs.service.impl;
 
 import com.example.tmc.cqrs.entity.Category;
 import com.example.tmc.cqrs.entity.Product;
+import com.example.tmc.cqrs.event.producer.ProductEventProducer;
 import com.example.tmc.cqrs.repository.CategoryRepository;
 import com.example.tmc.cqrs.repository.ProductRepository;
 import com.example.tmc.cqrs.service.ProductCommandService;
@@ -19,6 +20,8 @@ public class ProductCommandServiceImpl implements ProductCommandService {
 
     private final CategoryRepository categoryRepository;
 
+    private final ProductEventProducer productEventProducer;
+
     @Override
     public Product createProduct(Product product) {
 
@@ -26,6 +29,14 @@ public class ProductCommandServiceImpl implements ProductCommandService {
         product.setCategory(category.get());
         product.setId(UUID.randomUUID().toString());
         product.setCreatedAt(System.currentTimeMillis());
-        return productRepository.saveProduct(product);
+        Product newProduct = productRepository.saveProduct(product);
+        productEventProducer.pushProductCreateEvent(newProduct);
+        return newProduct;
+
+    }
+
+    @Override
+    public Product createDocument(Product product) {
+        return productRepository.saveDocument(product);
     }
 }

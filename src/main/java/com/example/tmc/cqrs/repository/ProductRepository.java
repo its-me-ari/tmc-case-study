@@ -7,4 +7,6 @@ public interface ProductRepository {
 
     Product saveProduct(Product product);
 
+    Product saveDocument(Product product);
+
 }

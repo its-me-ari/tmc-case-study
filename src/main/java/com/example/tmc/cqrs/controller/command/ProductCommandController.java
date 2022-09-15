@@ -25,7 +25,7 @@ public class ProductCommandController {
     private final ProductCommandMapper productCommandMapper;
 
     @PostMapping
-    public ResponseEntity<Map<String, Product>> createCategory(@RequestBody ProductCommandDto productCommandDto) {
+    public ResponseEntity<Map<String, Product>> createProduct(@RequestBody ProductCommandDto productCommandDto) {
 
         Product product = productCommandMapper.toProduct(productCommandDto);
         productCommandService.createProduct(product);
