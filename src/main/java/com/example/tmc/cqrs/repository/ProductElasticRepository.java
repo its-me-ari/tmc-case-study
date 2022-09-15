@@ -10,4 +10,7 @@ import java.util.List;
 public interface ProductElasticRepository extends ElasticsearchRepository<ProductDocument, String> {
 
     List<ProductDocument> findBySkuIn(List<String> sku);
+
+    List<ProductDocument> findByNameIn(List<String> name);
+
 }
