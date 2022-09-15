@@ -1,6 +1,6 @@
 package com.example.tmc.cqrs.service.impl;
 
-import com.example.tmc.cqrs.dto.QueryParameter;
+import com.example.tmc.cqrs.dto.query.QueryParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.repository.ProductElasticRepository;
 import com.example.tmc.cqrs.service.SearchQueryService;
@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service

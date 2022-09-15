@@ -1,6 +1,6 @@
 package com.example.tmc.cqrs.controller.query;
 
-import com.example.tmc.cqrs.dto.QueryParameter;
+import com.example.tmc.cqrs.dto.query.QueryParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.service.SearchQueryService;
 import lombok.RequiredArgsConstructor;

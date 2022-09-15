@@ -1,4 +1,4 @@
-package com.example.tmc.cqrs.dto;
+package com.example.tmc.cqrs.dto.query;
 
 import lombok.*;
 

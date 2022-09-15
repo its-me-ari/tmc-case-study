@@ -1,6 +1,6 @@
 package com.example.tmc.cqrs.controller.command;
 
-import com.example.tmc.cqrs.dto.ProductCommandDto;
+import com.example.tmc.cqrs.dto.command.ProductCommandDto;
 import com.example.tmc.cqrs.entity.Product;
 import com.example.tmc.cqrs.mapper.ProductCommandMapper;
 import com.example.tmc.cqrs.service.ProductCommandService;
