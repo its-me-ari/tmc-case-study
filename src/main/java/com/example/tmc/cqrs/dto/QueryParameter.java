@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchQueryDto {
+public class QueryParameter {
 
     private List<String> sku;
     private List<String> name;

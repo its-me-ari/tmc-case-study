@@ -1,6 +1,6 @@
 package com.example.tmc.cqrs.controller.query;
 
-import com.example.tmc.cqrs.dto.SearchQueryDto;
+import com.example.tmc.cqrs.dto.QueryParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.service.SearchQueryService;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +22,9 @@ public class SearchQueryController {
     private final SearchQueryService searchQueryService;
 
     @GetMapping
-    public ResponseEntity<Map<String, ?>> search(SearchQueryDto searchQueryDto) {
+    public ResponseEntity<Map<String, ?>> search(QueryParameter queryParameter) {
 
-        final List<ProductDocument> products = searchQueryService.search(searchQueryDto);
+        final List<ProductDocument> products = searchQueryService.search(queryParameter);
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("data", products);
