@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchQueryCategoryDto {
+public class CategoryParameter {
 
     private List<String> id;
     private List<String> name;

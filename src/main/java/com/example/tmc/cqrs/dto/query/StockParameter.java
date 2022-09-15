@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchQueryPriceDto {
+public class StockParameter {
 
     private Integer start;
     private Integer end;

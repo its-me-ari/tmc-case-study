@@ -13,7 +13,7 @@ public class QueryParameter {
 
     private List<String> sku;
     private List<String> name;
-    private SearchQueryPriceDto price;
-    private SearchQueryStockDto stock;
-    private SearchQueryCategoryDto category;
+    private PriceParameter price;
+    private StockParameter stock;
+    private CategoryParameter category;
 }
