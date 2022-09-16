@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class CategoryCommandController {
     private final CategoryRestMapper categoryRestMapper;
 
     @PostMapping
-    public ResponseEntity<Map<String, Category>> createCategory(@RequestBody CategoryCommandDto categoryCommandDto) {
+    public ResponseEntity<Map<String, Category>> createCategory(@Valid @RequestBody CategoryCommandDto categoryCommandDto) {
 
         Category category = categoryRestMapper.toCategory(categoryCommandDto);
         categoryCommandService.createCategory(category);
