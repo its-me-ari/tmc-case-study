@@ -39,7 +39,7 @@ class SearchQueryServiceImplTest {
     }
 
     @Test
-    void searchWithSkuIn123() {
+    void searchProductsWithSkuIn123() {
 
         // given
         List<String> skuList = Arrays.asList
@@ -69,7 +69,7 @@ class SearchQueryServiceImplTest {
     }
 
     @Test
-    void searchWithNameLikeABC() {
+    void searchProductsWithNameLikeABC() {
 
         // given
         List<String> nameList = Arrays.asList
