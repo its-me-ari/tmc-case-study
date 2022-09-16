@@ -1,7 +1,7 @@
 package com.example.tmc.transportlayer.event.producer;
 
 import com.example.tmc.entities.Category;
-import com.example.tmc.infrastructure.adapters.config.kafka.KafkaTopics;
+import com.example.tmc.config.kafka.KafkaTopics;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;

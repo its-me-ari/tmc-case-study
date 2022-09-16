@@ -1,4 +1,4 @@
-package com.example.tmc.infrastructure.adapters.config.security;
+package com.example.tmc.config.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.Transient;

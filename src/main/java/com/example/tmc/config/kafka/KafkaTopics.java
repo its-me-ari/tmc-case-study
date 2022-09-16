@@ -1,4 +1,4 @@
-package com.example.tmc.infrastructure.adapters.config.kafka;
+package com.example.tmc.config.kafka;
 
 public class KafkaTopics {
 

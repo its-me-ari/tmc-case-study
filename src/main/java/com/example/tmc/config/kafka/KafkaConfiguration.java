@@ -1,4 +1,4 @@
-package com.example.tmc.infrastructure.adapters.config.kafka;
+package com.example.tmc.config.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
