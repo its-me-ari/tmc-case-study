@@ -1,9 +1,9 @@
 package com.example.tmc.cqrs.service;
 
-import com.example.tmc.cqrs.entity.Category;
-import com.example.tmc.cqrs.event.producer.CategoryEventProducer;
-import com.example.tmc.cqrs.repository.CategoryRepository;
-import com.example.tmc.cqrs.service.impl.CategoryCommandServiceImpl;
+import com.example.tmc.entities.Category;
+import com.example.tmc.transportlayer.event.producer.CategoryEventProducer;
+import com.example.tmc.repositories.CategoryRepository;
+import com.example.tmc.interactors.impl.CategoryCommandServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
