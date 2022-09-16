@@ -116,14 +116,14 @@ project:
 
 ## Implementations
 
+- Unit Test
 - Validation
 - Different Database for Command API and Query API
 - Using Message Broker to Sync Between Command API
   and Query API
 
 ## Work in progress
-- Backend Query API, there are some issue on `@RequestParam`, so currently this feature only support two parameter: `sku, name`
+- Search product in categories are still in progress
 
 ## What's next
-- Unit Test
 - Database Migration (Create Table, Index, etc)
