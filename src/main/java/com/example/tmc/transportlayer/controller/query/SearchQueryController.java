@@ -1,6 +1,6 @@
 package com.example.tmc.transportlayer.controller.query;
 
-import com.example.tmc.transportlayer.controller.dto.query.QueryParameter;
+import com.example.tmc.transportlayer.controller.dto.query.QueryParameterDto;
 import com.example.tmc.entities.ProductDocument;
 import com.example.tmc.interactors.SearchQueryService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class SearchQueryController {
 
     @GetMapping
     public ResponseEntity<Map<String, ?>> search(
-            QueryParameter queryParameter,
+            QueryParameterDto queryParameter,
             @PageableDefault(size = 10) Pageable pageable) {
 
         final Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);

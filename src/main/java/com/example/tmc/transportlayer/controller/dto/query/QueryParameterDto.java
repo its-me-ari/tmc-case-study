@@ -9,11 +9,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QueryParameter {
+public class QueryParameterDto {
 
     private List<String> sku;
     private List<String> name;
-    private PriceParameter price;
-    private StockParameter stock;
-    private CategoryParameter category;
+    private PriceParameterDto price;
+    private StockParameterDto stock;
+    private CategoryParameterDto category;
 }

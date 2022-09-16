@@ -1,6 +1,6 @@
 package com.example.tmc.interactors.impl;
 
-import com.example.tmc.transportlayer.controller.dto.query.QueryParameter;
+import com.example.tmc.transportlayer.controller.dto.query.QueryParameterDto;
 import com.example.tmc.entities.ProductDocument;
 import com.example.tmc.repositories.ProductElasticRepository;
 import com.example.tmc.interactors.SearchQueryService;
@@ -17,7 +17,7 @@ public class SearchQueryServiceImpl implements SearchQueryService {
     private final ProductElasticRepository productElasticRepository;
 
     @Override
-    public Page<ProductDocument> search(QueryParameter queryParameter, Pageable pageable) {
+    public Page<ProductDocument> search(QueryParameterDto queryParameter, Pageable pageable) {
 
         final boolean hasSku = ObjectUtils.isNotEmpty(queryParameter.getSku());
         if (hasSku)

@@ -1,8 +1,8 @@
 package com.example.tmc.interactors.impl;
 
-import com.example.tmc.transportlayer.controller.dto.query.PriceParameter;
-import com.example.tmc.transportlayer.controller.dto.query.QueryParameter;
-import com.example.tmc.transportlayer.controller.dto.query.StockParameter;
+import com.example.tmc.transportlayer.controller.dto.query.PriceParameterDto;
+import com.example.tmc.transportlayer.controller.dto.query.QueryParameterDto;
+import com.example.tmc.transportlayer.controller.dto.query.StockParameterDto;
 import com.example.tmc.entities.ProductDocument;
 import com.example.tmc.repositories.ProductElasticRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,8 +48,8 @@ class SearchQueryServiceImplTest {
                         "2",
                         "3"
                 });
-        QueryParameter queryParameter =
-                QueryParameter.builder()
+        QueryParameterDto queryParameter =
+                QueryParameterDto.builder()
                         .sku(skuList)
                         .build();
         when(productElasticRepository.findBySkuIn(skuList, pageable))
@@ -78,8 +78,8 @@ class SearchQueryServiceImplTest {
                         "b",
                         "c"
                 });
-        QueryParameter queryParameter =
-                QueryParameter.builder()
+        QueryParameterDto queryParameter =
+                QueryParameterDto.builder()
                         .name(nameList)
                         .build();
         when(productElasticRepository.findByNameIn(nameList, pageable))
@@ -102,12 +102,12 @@ class SearchQueryServiceImplTest {
     void searchProductsWithPriceBetween100And1000() {
 
         // given
-        PriceParameter priceParameter = PriceParameter.builder()
+        PriceParameterDto priceParameter = PriceParameterDto.builder()
                 .start(100)
                 .end(1000)
                 .build();
-        QueryParameter queryParameter =
-                QueryParameter.builder()
+        QueryParameterDto queryParameter =
+                QueryParameterDto.builder()
                         .price(priceParameter)
                         .build();
         when(productElasticRepository.findByPriceBetween(
@@ -132,12 +132,12 @@ class SearchQueryServiceImplTest {
     void searchProductsWithStockBetween100And1000() {
 
         // given
-        StockParameter stockParameter = StockParameter.builder()
+        StockParameterDto stockParameter = StockParameterDto.builder()
                 .start(10)
                 .end(100)
                 .build();
-        QueryParameter queryParameter =
-                QueryParameter.builder()
+        QueryParameterDto queryParameter =
+                QueryParameterDto.builder()
                         .stock(stockParameter)
                         .build();
         when(productElasticRepository.findByStockBetween(
