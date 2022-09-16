@@ -2,8 +2,8 @@ package com.example.tmc.transportlayer.controller.command;
 
 import com.example.tmc.transportlayer.controller.dto.command.CategoryCommandDto;
 import com.example.tmc.entities.Category;
-import com.example.tmc.transportlayer.controller.mapper.CategoryCommandMapper;
 import com.example.tmc.interactors.CategoryCommandService;
+import com.example.tmc.transportlayer.controller.mapper.CategoryRestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ public class CategoryCommandController {
 
     private final CategoryCommandService categoryCommandService;
 
-    private final CategoryCommandMapper categoryCommandMapper;
+    private final CategoryRestMapper categoryRestMapper;
 
     @PostMapping
     public ResponseEntity<Map<String, Category>> createCategory(@RequestBody CategoryCommandDto categoryCommandDto) {
 
-        Category category = categoryCommandMapper.toCategory(categoryCommandDto);
+        Category category = categoryRestMapper.toCategory(categoryCommandDto);
         categoryCommandService.createCategory(category);
 
         Map<String, Category> payload = new HashMap<>();

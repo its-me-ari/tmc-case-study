@@ -1,9 +1,9 @@
 package com.example.tmc.transportlayer.controller.command;
 
-import com.example.tmc.transportlayer.controller.dto.command.ProductCommandDto;
 import com.example.tmc.entities.Product;
-import com.example.tmc.transportlayer.controller.mapper.ProductCommandMapper;
 import com.example.tmc.interactors.ProductCommandService;
+import com.example.tmc.transportlayer.controller.dto.command.ProductCommandDto;
+import com.example.tmc.transportlayer.controller.mapper.ProductRestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ public class ProductCommandController {
 
     private final ProductCommandService productCommandService;
 
-    private final ProductCommandMapper productCommandMapper;
+    private final ProductRestMapper productRestMapper;
 
     @PostMapping
     public ResponseEntity<Map<String, Product>> createProduct(@RequestBody ProductCommandDto productCommandDto) {
 
-        Product product = productCommandMapper.toProduct(productCommandDto);
+        Product product = productRestMapper.toProduct(productCommandDto);
         productCommandService.createProduct(product);
 
         Map<String, Product> payload = new HashMap<>();

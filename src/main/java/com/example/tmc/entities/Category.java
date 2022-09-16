@@ -2,8 +2,6 @@ package com.example.tmc.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -12,10 +10,8 @@ import javax.validation.constraints.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Category {
 
-    @Id
     private String id;
 
     @NotEmpty(message = "name is empty")
