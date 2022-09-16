@@ -1,5 +1,6 @@
 package com.example.tmc.cqrs.service.impl;
 
+import com.example.tmc.cqrs.dto.query.PriceParameter;
 import com.example.tmc.cqrs.dto.query.QueryParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.repository.ProductElasticRepository;
@@ -86,6 +87,36 @@ class SearchQueryServiceImplTest {
                                 ProductDocument.builder().name("a").build(),
                                 ProductDocument.builder().name("b").build(),
                                 ProductDocument.builder().name("c").build()
+                        )
+                ));
+
+        // when
+        Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);
+
+        // then
+        assertThat(products).isNotEmpty();
+    }
+
+    @Test
+    void searchProductsWithPriceBetween100And1000() {
+
+        // given
+        PriceParameter priceParameter = PriceParameter.builder()
+                .start(100)
+                .end(1000)
+                .build();
+        QueryParameter queryParameter =
+                QueryParameter.builder()
+                        .price(priceParameter)
+                        .build();
+        when(productElasticRepository.findByPriceBetween(
+                priceParameter.getStart(),
+                priceParameter.getEnd(),
+                pageable
+        ))
+                .thenReturn(new PageImpl<>(
+                        List.of(
+                                ProductDocument.builder().build()
                         )
                 ));
 
