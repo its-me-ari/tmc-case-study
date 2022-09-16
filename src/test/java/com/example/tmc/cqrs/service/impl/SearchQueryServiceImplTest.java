@@ -2,6 +2,7 @@ package com.example.tmc.cqrs.service.impl;
 
 import com.example.tmc.cqrs.dto.query.PriceParameter;
 import com.example.tmc.cqrs.dto.query.QueryParameter;
+import com.example.tmc.cqrs.dto.query.StockParameter;
 import com.example.tmc.cqrs.entity.ProductDocument;
 import com.example.tmc.cqrs.repository.ProductElasticRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -112,6 +113,36 @@ class SearchQueryServiceImplTest {
         when(productElasticRepository.findByPriceBetween(
                 priceParameter.getStart(),
                 priceParameter.getEnd(),
+                pageable
+        ))
+                .thenReturn(new PageImpl<>(
+                        List.of(
+                                ProductDocument.builder().build()
+                        )
+                ));
+
+        // when
+        Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);
+
+        // then
+        assertThat(products).isNotEmpty();
+    }
+
+    @Test
+    void searchProductsWithStockBetween100And1000() {
+
+        // given
+        StockParameter stockParameter = StockParameter.builder()
+                .start(10)
+                .end(100)
+                .build();
+        QueryParameter queryParameter =
+                QueryParameter.builder()
+                        .stock(stockParameter)
+                        .build();
+        when(productElasticRepository.findByStockBetween(
+                stockParameter.getStart(),
+                stockParameter.getEnd(),
                 pageable
         ))
                 .thenReturn(new PageImpl<>(
