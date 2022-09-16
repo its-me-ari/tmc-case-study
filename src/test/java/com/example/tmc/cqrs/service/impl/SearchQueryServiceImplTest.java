@@ -65,4 +65,34 @@ class SearchQueryServiceImplTest {
         // then
         assertThat(products).isNotEmpty();
     }
+
+    @Test
+    void searchWithNameLikeABC() {
+
+        // given
+        List<String> nameList = Arrays.asList
+                (new String[]{
+                        "a",
+                        "b",
+                        "c"
+                });
+        QueryParameter queryParameter =
+                QueryParameter.builder()
+                        .name(nameList)
+                        .build();
+        when(productElasticRepository.findByNameIn(nameList, pageable))
+                .thenReturn(new PageImpl<>(
+                        List.of(
+                                ProductDocument.builder().name("a").build(),
+                                ProductDocument.builder().name("b").build(),
+                                ProductDocument.builder().name("c").build()
+                        )
+                ));
+
+        // when
+        Page<ProductDocument> products = searchQueryService.search(queryParameter, pageable);
+
+        // then
+        assertThat(products).isNotEmpty();
+    }
 }
