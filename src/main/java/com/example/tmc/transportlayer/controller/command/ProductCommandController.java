@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class ProductCommandController {
     private final ProductRestMapper productRestMapper;
 
     @PostMapping
-    public ResponseEntity<Map<String, Product>> createProduct(@RequestBody ProductCommandDto productCommandDto) {
+    public ResponseEntity<Map<String, Product>> createProduct(@Valid @RequestBody ProductCommandDto productCommandDto) {
 
         Product product = productRestMapper.toProduct(productCommandDto);
         productCommandService.createProduct(product);
